@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-@export var speed = 400 # How fast the player will move (pixels/sec).
-var screen_size # Size of the game window.
+@export var speed = 400 # Velocidade do jogador (pixels/sec).
+var screen_size # Tamanho da janela do jogo.
 
 func _ready():
 	screen_size = get_viewport_rect().size
+
+func _physics_process(delta):
+	var velocity = Vector2.ZERO # O vetor de movimento do jogador.
 	
-func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -19,6 +20,10 @@ func _process(delta):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		
+
+	# Use move_and_slide com a velocidade
 	position += velocity * delta
+
+	# Limitar a posição do jogador na tela
 	position = position.clamp(Vector2.ZERO, screen_size)
+	move_and_slide()
