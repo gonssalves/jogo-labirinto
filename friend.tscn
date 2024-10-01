@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfuno7asuwitx"]
+
+[ext_resource type="Texture2D" uid="uid://qoowfb7ysnrg" path="res://IMG-20240723-WA0013-removebg-preview.png" id="1_iu1po"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjyh0"]
+size = Vector2(227, 394)
+
+[node name="Friend" type="CharacterBody2D"]
+scale = Vector2(0.273399, 0.273399)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iu1po")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, 94)
+shape = SubResource("RectangleShape2D_kjyh0")
