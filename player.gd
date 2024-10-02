@@ -5,18 +5,27 @@ var wall_layer : TileMapLayer   # Camada de paredes
 var tile_size = Vector2(16, 16)  # Tamanho do tile
 
 var caminho = []  # Lista com as posições do caminho
-var velocidade = 100  # Velocidade de movimento do personagem
+var velocidade = 200  # Velocidade de movimento do personagem
 var proximo_ponto_index = 0  # Índice do próximo ponto no caminho
+
+@export var friend: CharacterBody2D
 
 func _ready():
 	grass_layer = get_node("/root/Maze/Grass")  # Referência para a camada de grama
 	wall_layer = get_node("/root/Maze/Walls")    # Referência para a camada de paredes
 	
-	# Inicia a busca pelo caminho
-	var start = Vector2(6, 7)  # Ponto de partida (ajuste conforme necessário)
-	var goal = Vector2(67, 37)   # Ponto de destino (ajuste conforme necessário)
-	caminho = busca_em_largura(start, goal)
+	var friend_pos_global = friend.global_position
 
+	# Converte a posição global para coordenadas do tile
+	var friend_pos_tile = friend_pos_global / tile_size
+	friend_pos_tile = friend_pos_tile.floor() # Converte para inteiro
+	
+	# Inicia a busca pelo caminho
+	var start = Vector2(6, 7)  # Ponto de partida 
+
+	var goal = friend_pos_tile   # Ponto de destino
+	caminho = busca_em_largura(start, goal)
+	
 func busca_em_largura(start: Vector2, goal: Vector2) -> Array:
 	var queue = []  # Fila para os pontos a serem visitados
 	var visited = {}  # Dicionário para os pontos visitados

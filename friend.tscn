@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfuno7asuwitx"]
 
-[ext_resource type="Texture2D" uid="uid://qoowfb7ysnrg" path="res://IMG-20240723-WA0013-removebg-preview.png" id="1_iu1po"]
+[ext_resource type="Texture2D" uid="uid://dnoq0hy1ortrq" path="res://IMG-20240723-WA0013-removebg-preview.png" id="1_iu1po"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjyh0"]
 size = Vector2(227, 394)
